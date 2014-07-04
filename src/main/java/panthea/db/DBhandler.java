@@ -27,6 +27,7 @@ public class DBhandler {
 		try {
 			connectDB();
 			System.err.println(Deity.class.getSimpleName());
+			Field classFields[] = Deity.class.getDeclaredFields();
 			System.err.println(Deity.class.getDeclaredFields());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
