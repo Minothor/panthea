@@ -12,6 +12,7 @@ public class Altar {
 	@Column(name="ALTAR_ID")
 	private long altarID;
 	
+	@Transient
 	private int[] locationArray = new int[3];
 	
 	@Column(name= "LOCATION")

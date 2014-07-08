@@ -157,6 +157,14 @@ public class Deity {
 		this.mood = mood;
 	}
 	
+	public Altar getPrimaryAltar() {
+		return primaryAltar;
+	}
+
+	public void setPrimaryAltar(Altar primaryAltar) {
+		this.primaryAltar = primaryAltar;
+	}
+
 	private static synchronized String getRandomEntry(String valueList)
 	{
 		String[] values = valueList.split(",");

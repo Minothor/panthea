@@ -15,12 +15,10 @@ public class Pantheon {
 	@Column(name="NAME")
 	private String name;
 	
-	@OneToOne
-	
-	@JoinColumn(referencedColumnName="deity_id")
+	@Transient
 	private Deity ruler;
 	
-	@Column(name="COLLECTIVE_POWER")
+	@Transient
 	private double collectivePower;
 	
 	private Pantheon(){}

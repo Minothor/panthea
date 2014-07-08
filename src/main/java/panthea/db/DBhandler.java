@@ -42,7 +42,7 @@ public class DBhandler {
 	
 	
 	public static void main(String[] args) {
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("myPersistenceUnit",loadProperties("localhost:3306/pantheondb","hlidskjalf","",true));
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("pantheaPersist",loadProperties("localhost:3306/pantheondb","hlidskjalf","",true,"create"));
 		EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();
 		Type earth = new Type("Earth", "Minecraft:itemBread,Minecraft:itemCarrot,Minecraft:ItemBakedPotato", "Minecraft:itemRawBeef,Minecraft:itemSteak,Minecraft:itemRawMutton,Minecraft:itemCookedMutton,Minecraft:itemRawPorkchop,Minecraft:itemcookedPorkChop", "entityCow,entitySheep,entityHorse,entityPig", "entityBlaze,entitySkeleton,entityWither", null, null);
@@ -52,7 +52,7 @@ public class DBhandler {
 		em.persist(gaia);
 		Altar gaia1 = new Altar(24,1,10,gaia,Blocks.log);
 		em.persist(gaia1);
-		
+		gaia.setPrimaryAltar(gaia1);
 		Mood neutralMood = new Mood(gaia, null,0.5F,0.5F,0.5F);
 		em.persist(neutralMood);
 		gaia.setMood(neutralMood);
@@ -61,10 +61,9 @@ public class DBhandler {
 		emf.close();
 	}
 
-	private static Map loadProperties(String url, String username, String pass, boolean mySQL) {
+	private static Map loadProperties(String url, String username, String pass, boolean mySQL,String dbOp) {
 		
 		String driver = "";
-		String dbOp = "create";
 		
 		if(mySQL)
 		{

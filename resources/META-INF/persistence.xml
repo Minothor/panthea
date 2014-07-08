@@ -1,6 +1,5 @@
 <persistence version="1.0" xmlns="http://java.sun.com/xml/ns/persistence">
-    <persistence-unit name="myPersistenceUnit">
+    <persistence-unit name="pantheaPersist">
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
-        
     </persistence-unit>
 </persistence>
