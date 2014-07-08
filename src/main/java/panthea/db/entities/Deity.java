@@ -19,6 +19,10 @@ public class Deity {
 	@Column(name="DEITY_NAME")
 	private String name;
 	
+	@OneToOne
+	@JoinColumn(referencedColumnName="altar_id")
+	private Altar primaryAltar;
+	
 	@ManyToOne
 	@JoinColumn(referencedColumnName="type_id")
 	private Type type;
@@ -57,7 +61,36 @@ public class Deity {
 		setType(type);
 		setGender(gender);
 		setPantheon(pantheon);
+		setFoodHoly(getRandomEntry(type.getFoodHoly()));
+		setFoodForbidden(getRandomEntry(type.getFoodForbidden()));
+		setMobHoly(getRandomEntry(type.getMobHoly()));
+		setMobHated(getRandomEntry(type.getMobHated()));
 		
+		
+	}
+
+	public String getFoodHoly() {
+		return foodHoly;
+	}
+
+	public void setFoodHoly(String foodHoly) {
+		this.foodHoly = foodHoly;
+	}
+
+	public String getFoodForbidden() {
+		return foodForbidden;
+	}
+
+	public void setFoodForbidden(String foodForbidden) {
+		this.foodForbidden = foodForbidden;
+	}
+
+	public String getMobHoly() {
+		return mobHoly;
+	}
+
+	public void setMobHoly(String mobHoly) {
+		this.mobHoly = mobHoly;
 	}
 
 	public long getId() {
@@ -122,6 +155,12 @@ public class Deity {
 
 	public void setMood(Mood mood) {
 		this.mood = mood;
+	}
+	
+	private static synchronized String getRandomEntry(String valueList)
+	{
+		String[] values = valueList.split(",");
+		return values[(int)(Math.random()*(values.length-1))];
 	}
 	
 }

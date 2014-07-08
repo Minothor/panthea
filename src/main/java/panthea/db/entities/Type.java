@@ -14,6 +14,9 @@ public class Type {
 	@Column(name="TYPE_NAME")
 	private String name;
 	
+	@Column(name="TYPE_BLOCK")
+	private String blockID;
+	
 	@Column(name="FOOD_HOLY")
 	private String foodHoly;
 	
@@ -62,6 +65,14 @@ public class Type {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public String getBlockID() {
+		return blockID;
+	}
+
+	public void setBlockID(String blockID) {
+		this.blockID = blockID;
 	}
 
 	public String getFoodHoly() {

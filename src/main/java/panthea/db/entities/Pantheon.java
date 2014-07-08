@@ -16,7 +16,8 @@ public class Pantheon {
 	private String name;
 	
 	@OneToOne
-	@JoinColumn(name="deity_id")
+	
+	@JoinColumn(referencedColumnName="deity_id")
 	private Deity ruler;
 	
 	@Column(name="COLLECTIVE_POWER")
