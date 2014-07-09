@@ -2,6 +2,10 @@ package panthea.db.entities;
 
 import javax.persistence.*;
 
+import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
+
 @Entity
 @Table(name="DEITY_TYPE")
 public class Type {
@@ -40,7 +44,7 @@ public class Type {
 	
 	private Type(){}
 	
-	public Type(String name, String foodHoly, String foodForbidden, String mobHoly, String mobHated, Type typeLiked, Type typeHated) {
+	public Type(String name, String foodHoly, String foodForbidden, String mobHoly, String mobHated, Type typeLiked, Type typeHated, Block block) {
 		setName(name);
 		setFoodHoly(foodHoly);
 		setFoodForbidden(foodForbidden);
@@ -48,6 +52,7 @@ public class Type {
 		setMobHated(mobHated);
 		setTypeLiked(typeLiked);
 		setTypeHated(typeHated);
+		setBlockID("Minecraft:MossyCobble");//temporary for testing
 	}
 	
 	

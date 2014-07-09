@@ -9,6 +9,7 @@ import net.minecraft.block.Block;
 public class Altar {
 	
 	@Id
+	@GeneratedValue
 	@Column(name="ALTAR_ID")
 	private long altarID;
 	
@@ -26,7 +27,8 @@ public class Altar {
 	
 	public Altar(int x, int y, int z, Deity deity, Block block)
 	{
-		
+		setLocation(x, y, z);
+		setDeity(deity);
 	}
 
 	public long getAltarID()
@@ -59,18 +61,20 @@ public class Altar {
 		this.deity = deity;
 	}
 	
+	@Transient
 	public String getLocation()
 	{
 		String response = locToString();
 		return response;
 	}
-	
+	@Transient
 	public void setLocation(int x, int y, int z)
 	{
 		locationArray= new int[]{x,y,z};
 		locationString = locToString();
 	}
 	
+	@Transient
 	private String locToString()
 	{
 		String response = ""+locationArray[0];
